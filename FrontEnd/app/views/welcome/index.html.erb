@@ -1,0 +1,41 @@
+<%= javascript_include_tag "welcome" %>
+
+<div class="buttons">
+  <span id="articles">ARTICLES</span><span id="videos">VIDEOS</span>
+</div>
+
+
+<div class="artlist">
+  <% @a["data"].each do |art| %>
+    <div class="aa sub" id="a<%= @a["data"].index(art) %>">
+      <span id="image<%= @a["data"].index(art) %>" style="display:none;"><%= art["thumbnail"] %></span>
+      <span class="row"><%= @a["data"].index(art) + 1 %></span>
+      <span class="time aDate"><%= art["metadata"]["publishDate"] %></span>
+      <div class="title">
+        <span><%= art["metadata"]["headline"] %></span>
+      </div>
+      <div class="longtitle">
+        <span ><%= art["metadata"]["subHeadline"] %></span>
+      </div>
+    </div>
+  <%end%>
+  <div class="more" style="display:none">See More Articles</div>
+</div>
+
+
+<div class="vidlist">
+  <% @v["data"].each do |vid| %>
+    <div class="vv sub" id="v<%= @v["data"].index(vid) %>">
+      <span id="image<%= @v["data"].index(vid) %>" style="display:none;"><%= vid["thumbnail"] %></span>
+      <span class="row"><%= @v["data"].index(vid) + 1 %></span>
+      <span class="time vidTime"><%=vid["metadata"]["duration"]%></span>
+      <div class="title">
+        <span class="title"><%= vid["metadata"]["title"] %></span>
+      </div>
+      <div class="longtitle">
+        <span class="longtitle"><%= vid["metadata"]["longTitle"] %></span>
+      </div>
+    </div>
+  <%end%>
+  <div class="more" style="display:none">See More Videos</div>
+</div>
